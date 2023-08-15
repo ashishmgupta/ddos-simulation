@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Updating...."
 sudo apt-get -y update
 echo "Installing dnsperf"
