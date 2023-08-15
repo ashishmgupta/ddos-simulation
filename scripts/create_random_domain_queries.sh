@@ -6,7 +6,7 @@ if [ $# -ne 1 ]; then
 fi
 
 input_file="$1"
-output_file="dns_queries.txt"
+output_file="dns_queries_random.txt"
 grep -E '^[a-zA-Z0-9]+$' "$input_file" | sed -E 's/ //g' > "${output_file}_cleaned"
 
 cut -c 1-20 "${output_file}_cleaned" > "${output_file}_truncated"
