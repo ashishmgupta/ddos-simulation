@@ -15,7 +15,7 @@ cd ~/ddos-simulation/scripts
 chmod +x dnsperf_test.sh 
 ./dnsperf_test.sh -d single_domain_dns_queries.txt  -s 192.168.44.137 -Q 10000 -l 300
 ```
-## NXDomain flood attack : Targetting a single nameserver with large volume of illegitimate and random subdomains
+### NXDomain flood attack : Targetting a single nameserver with large volume of illegitimate and random subdomains
 ```
 cd ~/ddos-simulation/scripts
 chmod +x dnsperf_test.sh 
