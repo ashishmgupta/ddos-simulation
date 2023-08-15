@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Default values
-domain_name="marvel.local"
-input_file=""
-output_file="dns_queries.txt"
+domain_name=""
+input_file="/usr/share/wordlists/rockyou.txt"
+output_file="random_domains_dns_queries.txt"
 
 # Parse command-line arguments
 while [[ $# -gt 0 ]]; do
@@ -32,23 +32,30 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-if [ -z "$input_file" ]; then
-    echo "Usage: $0 -d <domain> -i <input_file> [-o <output_file>]"
+if [ -z "$domain_name" ]; then
+    read -p "Enter the domain name: " domain_name
+fi
+
+if [ -z "$domain_name" ]; then
+    echo "Domain name is required."
     exit 1
 fi
 
 echo "Remove lines with special characters and empty spaces"
-sudo grep -E '^[a-zA-Z0-9]+$' "$input_file" | sed -E 's/ //g' > "${output_file}_cleaned"
+grep -E '^[a-zA-Z0-9]+$' "$input_file" | sed -E 's/ //g' > "${output_file}_cleaned"
 
-echo "Truncate each line to MAX 100 characters"
-sudo cut -c 1-100 "${output_file}_cleaned" > "${output_file}_truncated"
+echo "Truncate each line to max 100 characters"
+cut -c 1-100 "${output_file}_cleaned" > "${output_file}_truncated"
 
-echo "Append the suffix ---> .${domain_name} A <--- to each line"
+echo "Remove deuplicates"
+sort -u "${output_file}_truncated" > "${output_file}_uniq"
+
+echo "Append the suffix to each line"
 while IFS= read -r line; do
     echo "${line}.${domain_name} A"
-done < "${output_file}_truncated" > "$output_file"
+done < "${output_file}_uniq" > "$output_file"
 
 echo "Clean up intermediate files"
-sudo rm "${output_file}_cleaned" "${output_file}_truncated"
+rm "${output_file}_cleaned" "${output_file}_truncated" "${output_file}_uniq"
 
-echo "Result saved in $output_file"
+echo "Transformation complete. Result saved in $output_file"
