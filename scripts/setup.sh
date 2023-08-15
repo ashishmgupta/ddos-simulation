@@ -22,3 +22,6 @@ sudo chmod +x *.sh
 echo "Started -- Preparing a file with DNS queries for random subdomains for a domain"
 sudo ./create_random_domain_queries_file.sh -i /usr/share/wordlists/rockyou.txt -o random_domains_dns_queries.txt
 echo "Completed -- Preparing a file with DNS queries for random domain names for a domain"
+echo "Started -- Preparing a file with multiple DNS query for a single domain"
+sudo ./create_single_domain_queries_file.sh
+echo "Completed -- Preparing a file with multiple DNS query for a single domain"
