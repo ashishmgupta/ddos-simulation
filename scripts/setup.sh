@@ -19,9 +19,9 @@ else
 fi
 if [ -e /usr/share/wordlists/rockyou.txt.gz ]; then
     echo "/usr/share/wordlists/rockyou.gz exists. Decompressing.."
-    sudo gzip -d /usr/share/wordlists/rockyou.gz
+    sudo gzip -d /usr/share/wordlists/rockyou.txt.gz
 else
-    echo "/usr/share/wordlists/rockyou.txt does not exist."
+    echo "/usr/share/wordlists/rockyou.txt.gz does not exist."
 fi
 echo "Allow execute for the scripts"
 sudo chmod +x *.sh 
