@@ -19,10 +19,11 @@ else
     echo "/usr/share/wordlists/rockyou.txt does not exist."
 fi
 echo "downloading the scripts from github"
-sudo wget https://raw.githubusercontent.com/ashishmgupta/ddos-simulation/main/scripts/create_random_domain_queries.sh -O ~/ddos-tests/create_random_domain_queries.sh
-sudo wget https://raw.githubusercontent.com/ashishmgupta/ddos-simulation/main/scripts/dnsperf_test.sh -O ~/ddos-tests/dnsperf_test.sh
-echo "Allow execute for the script"
-sudo chmod +x ~/ddos_tests/create_random_domain_queries.sh 
+sudo wget https://raw.githubusercontent.com/ashishmgupta/ddos-simulation/main/scripts/create_random_domain_queries_file.sh
+sudo wget https://raw.githubusercontent.com/ashishmgupta/ddos-simulation/main/scripts/dnsperf_test.sh
+echo "Allow execute for the scripts"
+sudo chmod +x ~/ddos_tests/create_random_domain_queries_file.sh 
 sudo chmod +x ~/ddos_tests/dnsperf_test.sh
-echo "preparing a file with DNS queries for random domain names"
-sudo ~/ddos_tests/create_random_domain_queries.sh /usr/share/wordlists/rockyou.txt 
+echo "Start -- Preparing a file with DNS queries for random subdomains for lpl.com"
+sudo ~/ddos_tests/create_random_domain_queries_file.sh -d lpl.com -i /usr/share/wordlists/rockyou.txt -o ~/ddos-tests/random_domains_dns_queries.txt
+echo "End -- Preparing a file with DNS queries for random domain names for lpl.com"
