@@ -6,13 +6,21 @@ sudo apt-get -y install dnsperf
 echo "Installing hping3"
 sudo apt-get -y install hping3
 echo "Installing wordlists"
-sudo apt-get -y wordlists
+sudo apt-get -y install wordlists
+echo "Installing wordlists"
+sudo apt-get -y install gzip
 echo "crearing a directory named ddos_tests"
 sudo mkdir ddos_tests
 echo "switching to ddos_tests directory"
-sudo cd ddos_tests
+cd ddos_tests
 echo "extracting the rockyou.txt from /usr/share/wordlists/rockyou.txt.gz to the current directory"
-gzip -d  /usr/share/wordlists/rockyou.txt.gz .
+if [ -e /usr/share/wordlists/rockyou.txt.gz ]; then
+    echo "/usr/share/wordlists/rockyou.txt.gz downloaded. Extracting to rockyou.txt in current directory"
+    gzip -d  /usr/share/wordlists/rockyou.txt.gz .
+else
+    echo "/usr/share/wordlists/rockyou.txt.gz does not exist."
+fi
+
 echo "downloading the scripts from github"
 wget https://raw.githubusercontent.com/ashishmgupta/ddos-simulation/main/scripts/create_random_domain_queries.sh -O create_random_domain_queries.sh
 wget https://raw.githubusercontent.com/ashishmgupta/ddos-simulation/main/scripts/dnsperf_test.sh -O dnsperf_test.sh
