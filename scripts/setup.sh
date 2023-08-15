@@ -9,24 +9,11 @@ echo "Installing wordlists"
 sudo apt-get -y install wordlists
 echo "Installing wordlists"
 sudo apt-get -y install gzip
-echo "crearing a directory named ddos_tests"
-sudo mkdir ../ddos_tests
-
-if [ -e /usr/share/wordlists/rockyou.txt ]; then
-    echo "/usr/share/wordlists/rockyou.txt was downloaded from the package wordlist"
-else
-    echo "/usr/share/wordlists/rockyou.txt does not exist."
-fi
-if [ -e /usr/share/wordlists/rockyou.txt.gz ]; then
-    echo "/usr/share/wordlists/rockyou.gz exists. Decompressing.."
-    sudo gzip -d /usr/share/wordlists/rockyou.txt.gz
-else
-    echo "/usr/share/wordlists/rockyou.txt.gz does not exist."
-fi
+sudo gzip -d rockyou.txt.gz
 echo "Allow execute for the scripts"
 sudo chmod +x *.sh 
 echo "Started -- Preparing a file with DNS queries for random subdomains for a domain"
-sudo ./create_random_domain_queries_file.sh -i /usr/share/wordlists/rockyou.txt -o random_domains_dns_queries.txt
+sudo ./create_random_domain_queries_file.sh -i rockyou.txt -o random_domains_dns_queries.txt
 echo "Completed -- Preparing a file with DNS queries for random domain names for a domain"
 echo "Started -- Preparing a file with multiple DNS query for a single domain"
 sudo ./create_single_domain_queries_file.sh
