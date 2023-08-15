@@ -6,6 +6,7 @@
 # and should also create one file named "single_domain_dns_queries.txt" with multiple entries of a single and valid domain.
 git clone https://github.com/ashishmgupta/ddos-simulation.git
 cd ~/ddos-simulation/scripts
+sudo chmod +x setup.sh
 ./setup.sh  
 ```
 ## Running the test
@@ -19,7 +20,7 @@ chmod +x dnsperf_test.sh
 ```
 cd ~/ddos-simulation/scripts
 chmod +x dnsperf_test.sh 
-./dnsperf_test.sh -d single_domain_dns_queries.txt  -s 192.168.44.137 -Q 10000 -l 300
+./dnsperf_test.sh -d random_domains_dns_queries.txt -s 192.168.44.137 -Q 10000 -l 300
 ```
 
 ## Infrastructure
