@@ -18,12 +18,8 @@ if [ -e /usr/share/wordlists/rockyou.txt ]; then
 else
     echo "/usr/share/wordlists/rockyou.txt does not exist."
 fi
-echo "downloading the scripts from github"
-sudo wget https://raw.githubusercontent.com/ashishmgupta/ddos-simulation/main/scripts/create_random_domain_queries_file.sh
-sudo wget https://raw.githubusercontent.com/ashishmgupta/ddos-simulation/main/scripts/dnsperf_test.sh
 echo "Allow execute for the scripts"
-sudo chmod +x ~/ddos_tests/create_random_domain_queries_file.sh 
-sudo chmod +x ~/ddos_tests/dnsperf_test.sh
-echo "Start -- Preparing a file with DNS queries for random subdomains for lpl.com"
-sudo ~/ddos_tests/create_random_domain_queries_file.sh -d lpl.com -i /usr/share/wordlists/rockyou.txt -o ~/ddos-tests/random_domains_dns_queries.txt
-echo "End -- Preparing a file with DNS queries for random domain names for lpl.com"
+sudo chmod +x *.sh 
+echo "Started -- Preparing a file with DNS queries for random subdomains for lpl.com"
+sudo ./create_random_domain_queries_file.sh -d lpl.com -i /usr/share/wordlists/rockyou.txt -o random_domains_dns_queries.txt
+echo "Completed -- Preparing a file with DNS queries for random domain names for lpl.com"
