@@ -1,4 +1,4 @@
-# ddos-simulation : Methodologies to simulate DDoS testing scenario
+# ddos-simulation : Methodologies to simulate DDoS testing scenarios
 
 ## Setup 
 ```
