@@ -52,7 +52,7 @@ sort -u "${output_file}_truncated" > "${output_file}_uniq"
 
 echo "Append the suffix to each line"
 while IFS= read -r line; do
-    echo "${line}.${domain_name} A"
+    echo "ddostest-${line}.${domain_name} A"
 done < "${output_file}_uniq" > "$output_file"
 
 echo "Clean up intermediate files"
