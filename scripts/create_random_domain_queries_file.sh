@@ -45,7 +45,7 @@ echo "Remove lines with special characters and empty spaces"
 grep -E '^[a-zA-Z0-9]+$' "$input_file" | sed -E 's/ //g' > "${output_file}_cleaned"
 
 echo "Truncate each line to max 100 characters"
-cut -c 1-100 "${output_file}_cleaned" > "${output_file}_truncated"
+cut -c 1-50 "${output_file}_cleaned" > "${output_file}_truncated"
 
 echo "Remove duplicates"
 sort -u "${output_file}_truncated" > "${output_file}_uniq"
