@@ -35,7 +35,7 @@ read -p "Confirm the values (y/n) and run the script? " confirm
 
 if [[ "$confirm" == "y" ]]; then
     timestamp=$(date +"%Y%m%d%H%M%S")
-    output_file="${timestamp}_${nameserver}_test_legit_queries.txt"
+    output_file="${timestamp}_${nameserver}_${queries_per_second}_${time_limit_in_seconds}.txt"
     echo "Running dnsperf..."
     
     dnsperf -d "$dns_query_file" -s "$nameserver" -Q "$queries_per_second" -l "$time_limit_in_seconds" > "$output_file"

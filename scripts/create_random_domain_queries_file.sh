@@ -47,10 +47,10 @@ grep -E '^[a-zA-Z0-9]+$' "$input_file" | sed -E 's/ //g' > "${output_file}_clean
 echo "Truncate each line to max 100 characters"
 cut -c 1-100 "${output_file}_cleaned" > "${output_file}_truncated"
 
-echo "Remove deuplicates"
+echo "Remove duplicates"
 sort -u "${output_file}_truncated" > "${output_file}_uniq"
 
-echo "Append the suffix to each line"
+echo "Append the prefix dddostest- and suffix ===> ${domain_name} A <=== on each line"
 while IFS= read -r line; do
     echo "ddostest-${line}.${domain_name} A"
 done < "${output_file}_uniq" > "$output_file"
